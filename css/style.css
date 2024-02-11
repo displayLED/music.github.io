@@ -75,6 +75,37 @@ html {
   padding: 15px 0;
   background: #c04e9e;
 }
+
+
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+img {
+  border-radius: 10px;
+  max-width: 95%;
+  object-fit: contain;
+  transition: all 0.3s ease-in-out;
+
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+
+
+.text {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+
 .navbar .max-width {
   display: flex;
   align-items: center;
