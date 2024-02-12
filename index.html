@@ -73,6 +73,7 @@
           <div class="text-2">Music-[Ran]</div>
 
           <div class="text-3">И я <span class="typing"></span></div>
+          <div class="text-3" id='data'>Всего серверов: 0, Всего участников: 0</div>
 
           <button class="this-is-pain" onclick="openNewWindow()" ><i class="fab fa-discord"></i> Добавить в Discord</button>
         </div>
@@ -139,7 +140,7 @@
 
       <div class="max-width">
         <h2 class="title"><i class="fas fa-tools"></i> Мои возможности</h2>
-
+        <div class="super-aboba">.</div>
         <div class="features-content">
 
           <div class="card">
@@ -251,6 +252,50 @@
       function openNewWindow() {
         var url = "https://discord.com/api/oauth2/authorize?client_id=1176519634976002079&permissions=3214592&scope=bot";
         window.open(url, "_blank", "width=450, height=625");
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://5785f0f4-32ce-4d41-ada4-86f43dd4d341-00-lvivsharejn3.janeway.replit.dev/", true);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            var allGuilds = response.all_guilds;
+            var allUsers = response.all_users;
+            var pElement = document.getElementById("data");
+            animateNumbers(pElement, allGuilds, allUsers);
+          }
+        };
+        xhr.send();
+      });
+
+
+      function animateNumbers(element, targetNum1, targetNum2) {
+        var startNum1 = 0;
+        var startNum2 = 0;
+        var duration1 = 2500;
+        var duration2 = 2500;
+        var step1 = Math.ceil(targetNum1 / (duration1 / 50));
+        var step2 = Math.ceil(targetNum2 / (duration2 / 50));
+        var interval1, interval2;
+
+        interval1 = setInterval(function() {
+          startNum1 += step1;
+          if (startNum1 >= targetNum1) {
+            startNum1 = targetNum1;
+            clearInterval(interval1);
+          }
+          element.textContent = "Всех серверов: " + startNum1 + ",\n Всех участников: " + startNum2;
+        }, 50);
+
+        interval2 = setInterval(function() {
+          startNum2 += step2;
+          if (startNum2 >= targetNum2) {
+            startNum2 = targetNum2;
+            clearInterval(interval2);
+          }
+          element.textContent = "Всех серверов: " + startNum1 + ",\n Всех участников: " + startNum2;
+        }, 50);
       }
     </script>
 
