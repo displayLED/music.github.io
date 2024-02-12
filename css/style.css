@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 
-/* vote Mikuni and stop looking at the code kthxbai */
 
 table {
   border-collapse: collapse;
@@ -83,6 +82,14 @@ html {
   align-items: center;
   justify-content: center;
   margin-bottom: 3%;
+}
+
+.super-aboba {
+  background-color: #fff;
+  border: 50px;
+  max-height: 3px;
+  max-width: 30%;
+  margin: 0 auto;
 }
 
 img {
